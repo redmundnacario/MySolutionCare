@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 import { IClient } from "@models/application"
-import { ClientListItem } from "./ClientListItem";
+import { ClientRow } from "./ClientRow";
 
 export const ClientTable = ({ clients }: { clients: IClient[] }) => {
   return (
@@ -22,7 +22,7 @@ export const ClientTable = ({ clients }: { clients: IClient[] }) => {
         </TableHead>
         <TableBody>
           {clients.map((client) => (
-            <ClientListItem key={client.id} client={client} />
+            <ClientRow key={client.id} client={client} />
           ))}
           {!clients ||
             (!clients.length && (

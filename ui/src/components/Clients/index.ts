@@ -1,4 +1,4 @@
 export * from "./ClientActionBar"
-export * from "./ClientListItem"
+export * from "./ClientRow"
 export * from "./ClientTable"
 export * from "./ClientPageContainer"

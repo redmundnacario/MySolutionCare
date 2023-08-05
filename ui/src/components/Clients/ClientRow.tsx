@@ -5,7 +5,7 @@ export interface IProps {
   client: IClient;
 }
 
-export const ClientListItem = ({ client }: IProps) => {
+export const ClientRow = ({ client }: IProps) => {
   const { id, firstName, lastName, email, phoneNumber } = client;
 
   return (

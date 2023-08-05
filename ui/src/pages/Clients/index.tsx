@@ -21,5 +21,4 @@ const Clients = () => {
   );
 }
 
-// export default memo(Clients);
-export default Clients
+export default memo(Clients);
