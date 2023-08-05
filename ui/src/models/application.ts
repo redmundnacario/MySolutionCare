@@ -1,4 +1,4 @@
-interface IClient {
+export interface IClient {
   id: string;
   firstName: string;
   lastName: string;
@@ -6,6 +6,6 @@ interface IClient {
   phoneNumber: string;
 }
 
-interface IApplicationState {
+export interface IApplicationState {
   clients: IClient[];
 }

@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import { IApplicationState } from "@models/application"
 
 const initialState: IApplicationState = {
   clients: [],
@@ -14,6 +15,7 @@ export const StateContext = createContext<{
 
 export const ACTIONS = {
   FETCH_ALL_CLIENTS: "FETCH_ALL_CLIENTS",
+  ADD_CLIENT: "ADD_CLIENT"
 };
 
 type Action = {
@@ -25,6 +27,11 @@ const reducer = (state: IApplicationState, action: Action) => {
   switch (action.type) {
     case ACTIONS.FETCH_ALL_CLIENTS:
       return { ...state, clients: action.data };
+    case ACTIONS.ADD_CLIENT:
+      return { ...state, clients: [
+        ...state.clients,
+        ...action.data
+      ]}
     default:
       return state;
   }

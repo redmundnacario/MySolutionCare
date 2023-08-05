@@ -1,4 +1,5 @@
 import apiClient from "./apiClient";
+import { IClient } from "@models/application"
 
 export const getClients = (): Promise<IClient[]> => {
   return apiClient.get<IClient[]>("clients");

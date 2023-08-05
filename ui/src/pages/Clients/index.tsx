@@ -1,13 +1,12 @@
 import { memo, useContext, useEffect } from "react";
-import { Paper, Typography } from "@mui/material";
-import { StateContext } from "../../store/DataProvider";
-import Page from "../../components/Page";
-import ClientTable from "./ClientTable";
-import { getClients } from "../../services/api";
 
-function Clients() {
-  const { state, dispatch } = useContext(StateContext);
-  const { clients } = state;
+import { ClientPageContainer } from "@components/Clients";
+import Page from "@components/Page";
+import { getClients } from "@services/api";
+import { StateContext } from "@store/DataProvider";
+
+const Clients = () => {
+  const { dispatch } = useContext(StateContext);
 
   useEffect(() => {
     getClients().then((clients) =>
@@ -17,14 +16,10 @@ function Clients() {
 
   return (
     <Page>
-      <Typography variant="h4" sx={{ textAlign: "start" }}>
-        Clients
-      </Typography>
-      <Paper sx={{ margin: "auto", marginTop: 3 }}>
-        <ClientTable clients={clients} />
-      </Paper>
+      <ClientPageContainer />
     </Page>
   );
 }
 
-export default memo(Clients);
+// export default memo(Clients);
+export default Clients

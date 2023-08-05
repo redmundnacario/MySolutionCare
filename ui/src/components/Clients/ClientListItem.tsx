@@ -1,10 +1,11 @@
 import { TableCell, TableRow } from "@mui/material";
+import { IClient } from "@models/application"
 
 export interface IProps {
   client: IClient;
 }
 
-export default function ClientListItem({ client }: IProps) {
+export const ClientListItem = ({ client }: IProps) => {
   const { id, firstName, lastName, email, phoneNumber } = client;
 
   return (
