@@ -27,7 +27,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "format": "npx prettier --write ./src"
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "craco-alias": "^3.0.1",
+    "prettier": "^3.0.1",
     "tailwindcss": "^3.3.3"
   }
 }
