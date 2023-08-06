@@ -8,9 +8,11 @@ export const ClientActionBar = () => {
 	const { handleOpenModal } = useCreateClientActionsContext();
 	const { searchTerm, handleChangeSearchTerm } = useSearchClientActionsContext();
 	return (
-		<div className='flex justify-between mt-6 items-center'>
+		<div className='flex flex-col mt-6 gap-4 md:flex md:flex-row md:justify-between md:items-center'>
 			<SearchBar handleChange={handleChangeSearchTerm} searchTerm={searchTerm} />
-			<Button onClick={handleOpenModal}>Create new client</Button>
+			<div className='flex justify-end'>
+				<Button onClick={handleOpenModal}>Create new client</Button>
+			</div>
 		</div>
 	);
 };
