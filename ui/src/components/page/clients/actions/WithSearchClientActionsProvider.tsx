@@ -5,6 +5,7 @@ import { IClient } from '@models/application';
 import { StateContext } from '@store/DataProvider';
 
 type ClientActionsContextType = {
+  searchTerm: string | undefined;
   filteredClients: IClient[];
   handleChangeSearchTerm: (event : React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }
@@ -70,6 +71,7 @@ const WithSearchClientActionsProvider = ({children}:{children: ReactElement}) =>
   return (
     <SearchClientActionsContext.Provider
       value={{
+        searchTerm,
         filteredClients,
         handleChangeSearchTerm,
       }}

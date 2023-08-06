@@ -60,6 +60,11 @@ const WithCreateClientActionsProvider = ({children}:{children: ReactElement}) =>
   }
 
   const onSaveClient = () => {
+    if (formData === initialFormValue) {
+      setShowModal(false)
+      return
+    }
+
     createClient({
       id:"",
       ...formData
@@ -74,14 +79,14 @@ const WithCreateClientActionsProvider = ({children}:{children: ReactElement}) =>
     {
       step: 0,
       title: "Create new client",
-      modalContentElement: <PersonalDetailsForm onChange={onChangeInput} />,
+      modalContentElement: <PersonalDetailsForm onChange={onChangeInput} form={formData}/>,
       modalActionsElement: [<Button key={1} onClick={onNextStep}>Continue</Button>],
       onClose: () => setShowModal(false)
     },
     {
       step: 1,
       title: "Create new client",
-      modalContentElement: <ContactDetailsForm onChange={onChangeInput}/>,
+      modalContentElement: <ContactDetailsForm onChange={onChangeInput} form={formData}/>,
       modalActionsElement: [
         <Button key={1} onClick={onPreviousStep} variant="secondary" icon={<WestIcon />}>Back</Button>,
         <Button key={2} onClick={onSaveClient}>Save</Button>],
@@ -134,24 +139,28 @@ export const useCreateClientActionsContext = () =>{
 
 
 const PersonalDetailsForm = ({
+  form,
   onChange
 }:{
+  form: Record<string, any>;
   onChange:(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }) => {
   return <div className='flex flex-col gap-4'>
-    <Input label="First Name" fieldName='firstName' onChange={onChange} labelOff={false}/>
-    <Input label="Last Name" fieldName='lastName' onChange={onChange} labelOff={false}/>
+    <Input label="First Name" value={form.firstName} fieldName='firstName' onChange={onChange} labelOff={false}/>
+    <Input label="Last Name" value={form.lastName} fieldName='lastName' onChange={onChange} labelOff={false}/>
   </div>
 }
 
 const ContactDetailsForm = ({
+  form,
   onChange
 }:{
+  form: Record<string, any>;
   onChange:(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }) => {
   return <div className='flex flex-col gap-4'>
-    <Input label="Email" fieldName='email' onChange={onChange} labelOff={false}/>
-    <Input label="Phone Number" fieldName='phoneNumber' onChange={onChange} labelOff={false}/>
+    <Input label="Email" value={form.phoneNumber} fieldName='email' onChange={onChange} labelOff={false}/>
+    <Input label="Phone Number" value={form.email} fieldName='phoneNumber' onChange={onChange} labelOff={false}/>
   </div>
 }
 

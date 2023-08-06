@@ -15,9 +15,21 @@ export const ClientTable = ({ clients }: { clients: IClient[] }) => {
       <Table sx={{ minWidth: 400 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Phone number</TableCell>
-            <TableCell>Email</TableCell>
+            <TableCell>
+              <div className="font-bold">
+                Name
+              </div>
+            </TableCell>
+            <TableCell>
+              <div className="font-bold">
+                Phone number
+              </div>
+            </TableCell>
+            <TableCell>
+              <div className="font-bold">
+                Email
+              </div>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

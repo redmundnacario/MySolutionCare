@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 type InputPropsType = {
   label: string;
+  value: string;
   fieldName: string;
   labelOff: boolean;
   isSearch?: boolean;
@@ -14,6 +15,7 @@ type InputPropsType = {
 
 const Input = ({
   label,
+  value,
   fieldName,
   labelOff,
   isSearch = false,
@@ -32,6 +34,7 @@ const Input = ({
       }
 
       <TextField
+        defaultValue={value}
         id={fieldName}
         fullWidth
         name={fieldName}
