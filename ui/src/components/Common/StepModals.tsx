@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import Modal from '@components/Common/Modal';
+import Modal from '@components/common/Modal';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
