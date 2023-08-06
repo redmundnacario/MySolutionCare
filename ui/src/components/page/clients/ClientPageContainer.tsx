@@ -1,12 +1,6 @@
-import React from 'react'
-
-import { useContext } from "react";
-
 import { Paper, Typography } from "@mui/material";
 
 import { ClientTable, ClientActionBar } from "@components/page/clients";
-import { StateContext } from "@store/DataProvider";
-
 import { useSearchClientActionsContext } from './actions/WithSearchClientActionsProvider';
 
 export const ClientPageContainer = () => {

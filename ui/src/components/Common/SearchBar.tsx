@@ -6,7 +6,7 @@ export const SearchBar = ({
   handleChange: (event : React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }) => {
   return (
-    <div className="bg-white">
+    <div>
       <Input label="Search" fieldName="search" onChange={handleChange} labelOff={true} isSearch={true} placeholder="Search clients..."/>
     </div>
   );

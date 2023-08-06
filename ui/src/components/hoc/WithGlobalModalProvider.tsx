@@ -1,6 +1,8 @@
-import useModal, { UseModalReturnType } from '@components/hooks/useModal';
-import { Modal } from '@mui/material';
 import React, { ReactElement, createContext, useContext } from 'react'
+
+import { Modal } from '@mui/material';
+
+import useModal, { UseModalReturnType } from '@components/hooks/useModal';
 
 const GlobalModalContext =  createContext<UseModalReturnType | undefined>(undefined)
 

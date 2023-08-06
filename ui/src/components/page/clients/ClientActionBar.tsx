@@ -1,19 +1,14 @@
-import React from 'react'
-
-import styles from "@styles/pages/Clients.module.css"
 import Button from '@components/common/Button'
 import { SearchBar } from '@components/common/SearchBar'
 
 import { useCreateClientActionsContext } from './actions/WithCreateClientActionsProvider'
 import { useSearchClientActionsContext } from './actions/WithSearchClientActionsProvider'
 
-type Props = {}
-
-export const ClientActionBar = (props: Props) => {
+export const ClientActionBar = () => {
   const { handleOpenModal } = useCreateClientActionsContext()
   const { handleChangeSearchTerm } = useSearchClientActionsContext()
   return (
-    <div className={styles.clientsActionBar}>
+    <div className="flex justify-between mt-6 items-center">
       <SearchBar handleChange={handleChangeSearchTerm} />
       <Button 
         onClick={handleOpenModal}

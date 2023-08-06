@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { InputAdornment, InputLabel, TextField, Typography } from '@mui/material'
 import SearchIcon from "@mui/icons-material/Search";
-import { Grid, InputAdornment, InputLabel, TextField, Typography } from '@mui/material'
 
 type InputPropsType = {
   label: string;
@@ -21,36 +21,35 @@ const Input = ({
   onChange,
 }: InputPropsType) => {
   return (
-    <Grid container >
-      <Grid item xs={12}>
-        {
-          !labelOff && <InputLabel
-            shrink={false}
-            htmlFor={fieldName}
-        >
-            <Typography >{label}</Typography>
-        </InputLabel>
-        }
+    <div>
+      {
+        !labelOff && <InputLabel
+          shrink={false}
+          htmlFor={fieldName}
+      >
+          <Typography variant="body2">{label}</Typography>
+      </InputLabel>
+      }
 
-        <TextField
-          id={fieldName}
-          fullWidth
-          name={fieldName}
-          InputLabelProps={{shrink: labelOff ? false : true}}
-          variant="outlined"
-          onChange={(event) => onChange(event)}
-          type={isSearch? "search": undefined}
-          placeholder={placeholder}
-          InputProps={{
-            endAdornment: isSearch ? (
-              <InputAdornment position="end">
-                <SearchIcon />
-              </InputAdornment>
-            ): undefined,
-          }}
-        />
-      </Grid>
-    </Grid>
+      <TextField
+        id={fieldName}
+        fullWidth
+        name={fieldName}
+        InputLabelProps={{shrink: labelOff ? false : true}}
+        variant="outlined"
+        onChange={(event) => onChange(event)}
+        type={isSearch? "search": undefined}
+        placeholder={placeholder}
+        InputProps={{
+          sx: { height: 40, backgroundColor: "white", ...(isSearch && {borderRadius: "0.5rem"})},
+          endAdornment: isSearch ? (
+            <InputAdornment position="end">
+              <SearchIcon />
+            </InputAdornment>
+          ): undefined,
+        }}
+      />
+    </div>
   )
 }
 

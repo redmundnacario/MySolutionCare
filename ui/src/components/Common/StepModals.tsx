@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from 'react'
-
 import Modal from '@components/common/Modal';
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import { CardHeader, Grid, InputLabel, Step, StepLabel, Stepper, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { Step, StepLabel, Stepper} from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 type StepModalViewType = {
   step: number;
@@ -55,7 +49,7 @@ const ModalHeader = ({title, onClose}: {
   title: string;
   onClose: () => void;
 }) => {
-  return <div className='flex justify-between'>
+  return <div className='flex justify-between mb-4'>
     <Typography variant="h5" component="div">
       {title}
     </Typography>
@@ -70,76 +64,17 @@ const ModalContent = ({activeStep, steps , modalContentElement}:{
   steps: string[];
   modalContentElement: JSX.Element
 }) => {
-  return <div>
-    <Stepper activeStep={activeStep} alternativeLabel>
+  return <div className='mb-4'>
+    <div className='mb-4'>
+    <Stepper activeStep={activeStep}>
       {steps.map((label) => (
         <Step key={label}>
           <StepLabel>{label}</StepLabel>
         </Step>
       ))}
     </Stepper>
+    </div>
     {modalContentElement}
-
-    {/* <Grid container >
-      <Grid item xs={12}>
-          <InputLabel
-              shrink={false}
-              htmlFor={"firstname"}
-          >
-              <Typography >First name</Typography>
-          </InputLabel>
-
-      <TextField
-              id="firstname"
-              fullWidth
-              // margin="normal"
-              // InputLabelProps={{
-              //   shrink: true,
-              // }}
-              // InputProps={{
-              //   classes: { input: classes.inputs },
-              // }}
-              // name="username"
-              // autoComplete="username"
-              // autoFocus
-              // helperText={touched.username ? errors.username : ''}
-              // error={touched.username && Boolean(errors.username)}
-              // value={values.username}
-              variant="outlined"
-              // onChange={handleChange}
-            />
-      </Grid>
-  </Grid>
-  <Grid container >
-    <Grid item xs={12}>
-      <InputLabel
-          shrink={false}
-          htmlFor={"lastname"}
-      >
-          <Typography >Last name</Typography>
-      </InputLabel>
-
-      <TextField
-              id="lastname"
-              fullWidth
-              // margin="normal"
-              // InputLabelProps={{
-              //   shrink: true,
-              // }}
-              // InputProps={{
-              //   classes: { input: classes.inputs },
-              // }}
-              // name="username"
-              // autoComplete="username"
-              // autoFocus
-              // helperText={touched.username ? errors.username : ''}
-              // error={touched.username && Boolean(errors.username)}
-              // value={values.username}
-              variant="outlined"
-              // onChange={handleChange}
-            />
-    </Grid>
-  </Grid> */}
 </div>
 }
 
@@ -147,7 +82,7 @@ const ModalContent = ({activeStep, steps , modalContentElement}:{
 const ModalActions = ({buttonElements}:{ 
   buttonElements: JSX.Element[]
 }) => {
-  return <div className={`flex ${buttonElements.length > 1 ? "justify-between" : "justify-end"}`}>
+  return <div className={`flex mt-[3rem] ${buttonElements.length > 1 ? "justify-between" : "justify-end"}`}>
     {buttonElements}
   </div>
 }

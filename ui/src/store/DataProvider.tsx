@@ -28,9 +28,10 @@ const reducer = (state: IApplicationState, action: Action) => {
     case ACTIONS.FETCH_ALL_CLIENTS:
       return { ...state, clients: action.data };
     case ACTIONS.ADD_CLIENT:
+      console.log(action.data)
       return { ...state, clients: [
         ...state.clients,
-        ...action.data
+        action.data
       ]}
     default:
       return state;

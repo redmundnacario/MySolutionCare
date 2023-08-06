@@ -1,10 +1,13 @@
 import React, { ReactElement, createContext, useContext, useEffect, useState } from 'react'
 
+import WestIcon from '@mui/icons-material/West';
+
 import { useGlobalModalContext } from '@components/hoc/WithGlobalModalProvider';
 import Button from '@components/common/Button';
 import StepModals from '@components/common/StepModals';
 import Input from '@components/common/Input';
 import { createClient } from '@services/api';
+import { StateContext } from '@store/DataProvider';
 
 type ClientActionsContextType = {
   handleOpenModal: () => void;
@@ -30,6 +33,7 @@ const initialFormValue = {
 }
 
 const WithCreateClientActionsProvider = ({children}:{children: ReactElement}) => {
+  const { dispatch } = useContext(StateContext);
   const { showModal, setModal, setShowModal } = useGlobalModalContext()
 
   const [activeStep, setActiveStep] = useState<number | undefined>(undefined)
@@ -57,13 +61,12 @@ const WithCreateClientActionsProvider = ({children}:{children: ReactElement}) =>
 
   const onSaveClient = () => {
     createClient({
-      // id: generateRandomId(5),
       id:"",
       ...formData
+    }).then((client) => {
+      dispatch({ type: "ADD_CLIENT", data: client })
+      setShowModal(false)
     })
-    // .then((clients) =>
-    //   // dispatch({ type: "FETCH_ALL_CLIENTS", data: clients })
-    // );
   }
 
   // Render data
@@ -80,7 +83,7 @@ const WithCreateClientActionsProvider = ({children}:{children: ReactElement}) =>
       title: "Create new client",
       modalContentElement: <ContactDetailsForm onChange={onChangeInput}/>,
       modalActionsElement: [
-        <Button key={1} onClick={onPreviousStep}>Back</Button>,
+        <Button key={1} onClick={onPreviousStep} variant="secondary" icon={<WestIcon />}>Back</Button>,
         <Button key={2} onClick={onSaveClient}>Save</Button>],
       onClose: () => setShowModal(false),
     }
@@ -97,6 +100,7 @@ const WithCreateClientActionsProvider = ({children}:{children: ReactElement}) =>
         steps={STEPS}
         data={renderElements[activeStep]} /> )
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[ activeStep, formData ])
 
   // resets active step when modal is not present
@@ -134,10 +138,10 @@ const PersonalDetailsForm = ({
 }:{
   onChange:(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }) => {
-  return <>
+  return <div className='flex flex-col gap-4'>
     <Input label="First Name" fieldName='firstName' onChange={onChange} labelOff={false}/>
     <Input label="Last Name" fieldName='lastName' onChange={onChange} labelOff={false}/>
-  </>
+  </div>
 }
 
 const ContactDetailsForm = ({
@@ -145,10 +149,10 @@ const ContactDetailsForm = ({
 }:{
   onChange:(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }) => {
-  return <>
+  return <div className='flex flex-col gap-4'>
     <Input label="Email" fieldName='email' onChange={onChange} labelOff={false}/>
     <Input label="Phone Number" fieldName='phoneNumber' onChange={onChange} labelOff={false}/>
-  </>
+  </div>
 }
 
 

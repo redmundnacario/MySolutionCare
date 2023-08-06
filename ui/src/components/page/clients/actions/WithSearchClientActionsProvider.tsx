@@ -1,8 +1,8 @@
 import React, { ReactElement, createContext, useCallback, useContext, useEffect, useState } from 'react'
 
+import { useDebounce } from '@components/hooks/useDebounce';
 import { IClient } from '@models/application';
 import { StateContext } from '@store/DataProvider';
-import { useDebounce } from '@components/hooks/useDebounce';
 
 type ClientActionsContextType = {
   filteredClients: IClient[];
@@ -15,8 +15,6 @@ const WithSearchClientActionsProvider = ({children}:{children: ReactElement}) =>
   const { clients } = useContext(StateContext).state;
 
   const [filteredClients, setFilteredClients] = useState<IClient[]>([])
-  console.log(filteredClients)
-  console.log(clients)
   const [searchTerm, setSearchTerm]= useState<string | undefined>(undefined)
   const debouncedSearchTerm = useDebounce(searchTerm, 500) as string | undefined
 
@@ -66,6 +64,7 @@ const WithSearchClientActionsProvider = ({children}:{children: ReactElement}) =>
     } else {
       handleSearchFilter()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[debouncedSearchTerm])
 
   return (

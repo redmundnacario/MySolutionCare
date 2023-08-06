@@ -19,7 +19,7 @@ export const ClientRow = ({ client }: IProps) => {
         },
       }}
     >
-      <TableCell component="th" scope="row">
+      <TableCell component="th" scope="row" sx={{color: "#355fff"}}>
         {firstName} {lastName}
       </TableCell>
       <TableCell>{phoneNumber}</TableCell>
