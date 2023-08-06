@@ -35,7 +35,7 @@ Quality and best practices
 
 2. How does this look on different devices?
 
-`- Design is web responsive`
+`- Design is web, tablet, and mobile responsive`
 
 3. How can your submission allow for scalability?
 
